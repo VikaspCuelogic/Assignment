@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>ProductName</key>
+		<string>Product 1</string>
+		<key>ProductPrice</key>
+		<string>100</string>
+		<key>VendorName</key>
+		<string>Vendor 1</string>
+		<key>VendorAddress</key>
+		<string>Kolhapur,Maharashtra</string>
+		<key>VendorPhoneNo</key>
+		<string>9999999999</string>
+	</dict>
+	<dict>
+		<key>ProductName</key>
+		<string>Product 2</string>
+		<key>ProductPrice</key>
+		<string>200</string>
+		<key>VendorName</key>
+		<string>Vendor 2</string>
+		<key>VendorAddress</key>
+		<string>Pune,Maharashtra</string>
+		<key>VendorPhoneNo</key>
+		<string>9999999999</string>
+	</dict>
+	<dict>
+		<key>ProductName</key>
+		<string>Product 3</string>
+		<key>ProductPrice</key>
+		<string>300</string>
+		<key>VendorName</key>
+		<string>Vendor 3</string>
+		<key>VendorAddress</key>
+		<string>Ahamadnagar,Maharashtra</string>
+		<key>VendorPhoneNo</key>
+		<string>9999999999</string>
+	</dict>
+	<dict>
+		<key>ProductName</key>
+		<string>Product 4</string>
+		<key>ProductPrice</key>
+		<string>400</string>
+		<key>VendorName</key>
+		<string>Vendor 4</string>
+		<key>VendorAddress</key>
+		<string>Nashik,Maharashtra</string>
+		<key>VendorPhoneNo</key>
+		<string>9999999999</string>
+	</dict>
+	<dict>
+		<key>ProductName</key>
+		<string>Product 5</string>
+		<key>ProductPrice</key>
+		<string>500</string>
+		<key>VendorName</key>
+		<string>Vendor 5</string>
+		<key>VendorAddress</key>
+		<string>Latur,Maharashtra</string>
+		<key>VendorPhoneNo</key>
+		<string>9999999999</string>
+	</dict>
+	<dict>
+		<key>ProductName</key>
+		<string>Product 6</string>
+		<key>ProductPrice</key>
+		<string>600</string>
+		<key>VendorName</key>
+		<string>Vendor 6</string>
+		<key>VendorAddress</key>
+		<string>Sangli,Maharashtra</string>
+		<key>VendorPhoneNo</key>
+		<string>9999999999</string>
+	</dict>
+	<dict>
+		<key>ProductName</key>
+		<string>Product 7</string>
+		<key>ProductPrice</key>
+		<string>700</string>
+		<key>VendorName</key>
+		<string>Vendor 7</string>
+		<key>VendorAddress</key>
+		<string>Satara,Maharashtra</string>
+		<key>VendorPhoneNo</key>
+		<string>9999999999</string>
+	</dict>
+	<dict>
+		<key>ProductName</key>
+		<string>Product 8</string>
+		<key>ProductPrice</key>
+		<string>800</string>
+		<key>VendorName</key>
+		<string>Vendor 8</string>
+		<key>VendorAddress</key>
+		<string>Mumbai,Maharashtra</string>
+		<key>VendorPhoneNo</key>
+		<string>9999999999</string>
+	</dict>
+	<dict>
+		<key>ProductName</key>
+		<string>Product 9</string>
+		<key>ProductPrice</key>
+		<string>900</string>
+		<key>VendorName</key>
+		<string>Vendor 9</string>
+		<key>VendorAddress</key>
+		<string>Rajasthan</string>
+		<key>VendorPhoneNo</key>
+		<string>9999999999</string>
+	</dict>
+	<dict>
+		<key>ProductName</key>
+		<string>Product 10</string>
+		<key>ProductPrice</key>
+		<string>1000</string>
+		<key>VendorName</key>
+		<string>Vendor 10</string>
+		<key>VendorAddress</key>
+		<string>Surat,Gujrat</string>
+		<key>VendorPhoneNo</key>
+		<string>9999999999</string>
+	</dict>
+</array>
+</plist>
