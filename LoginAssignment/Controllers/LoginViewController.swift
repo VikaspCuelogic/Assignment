@@ -20,6 +20,10 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        textFieldUserName.text = storedUserName
+        textFieldPassword.text = storedPassword
+        textFieldPassword.setLeftPaddingPoints(10)
+        textFieldUserName.setLeftPaddingPoints(10)
     }
     
     @IBAction func validateCredentials(){

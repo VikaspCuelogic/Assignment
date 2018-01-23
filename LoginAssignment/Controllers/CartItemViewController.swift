@@ -11,16 +11,37 @@ import UIKit
 class CartItemViewController: UIViewController {
      @IBOutlet private weak var tableView : UITableView!
     
+    @IBOutlet weak var lablelNoProducts: UILabel!
     private var cartProductList : [Dictionary<String,Any>] = []
+    private var appDelegate = UIApplication.shared.delegate as! AppDelegate
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private var cartList = [CartProduct]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let tabContainer = self.tabBarController as! TabBarController
-        self.cartProductList = tabContainer.cartProductList
-        tableView.reloadData()
+       getCartProducts()
+    }
+    
+    private func getCartProducts(){
+        do {
+            cartList = try context.fetch(CartProduct.fetchRequest())
+            tableView.reloadData()
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+        if cartList.isEmpty {
+            
+            
+            lablelNoProducts.isHidden = false
+            tableView.isHidden = true
+        }else{
+            lablelNoProducts.isHidden = true
+            tableView.isHidden = false
+        }
     }
 
 }
@@ -32,28 +53,21 @@ extension CartItemViewController : UITableViewDelegate,UITableViewDataSource,Car
     }
     
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cartProductList.count
+        return cartList.count
     }
     
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cartRow", for: indexPath) as! CartTableViewCell
-        let product = cartProductList[indexPath.row]
+        let product = cartList[indexPath.row]
         cell.layer.borderColor = UIColor.black.cgColor
         cell.layer.borderWidth = 1
     
         cell.clipsToBounds = true
-        if let productName = product["ProductName"] as? String {
-            cell.labelProductName.text = productName
-        }
-        
-        if let productPrice = product["ProductPrice"] as? String {
-            cell.labelProductPrice.text = "Price : "+productPrice
-        }
-        
-        if let vendorName = product["VendorName"] as? String {
-            cell.labelVendorName.text = vendorName
-        }
-    
+       
+        cell.labelProductName.text = product.productname
+        cell.labelProductPrice.text = "Price : \(product.price)"
+        cell.labelVendorName.text = product.vendorname
+        cell.position = indexPath.row
         
         cell.tableRowDelegate = self
         return cell
@@ -65,13 +79,22 @@ extension CartItemViewController : UITableViewDelegate,UITableViewDataSource,Car
         return 130
     }
     
-    func didCellButtonTapped(_ cell: UITableViewCell) {
-        let item = tableView.indexPath(for: cell)
-        let position = item?.row
-        let tabContainer = self.tabBarController as! TabBarController
-        tabContainer.cartProductList.remove(at: position!)
-        cartProductList.remove(at: position!)
-        tableView.reloadData()
+    func didCellButtonTapped(_ cellPosition: Int) {
+        
+        if cellPosition < cartList.count {
+            context.delete(cartList[cellPosition])
+            appDelegate.saveContext()
+            cartList.remove(at: cellPosition)
+            tableView.reloadData()
+            if cartList.isEmpty {
+                lablelNoProducts.isHidden = false
+                tableView.isHidden = true
+            }else {
+                lablelNoProducts.isHidden = true
+                tableView.isHidden = false
+            }
+            
+        }
     }
     
 }

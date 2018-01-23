@@ -9,7 +9,7 @@
 import UIKit
 
 protocol UICollectionViewCellDelegate {
-    func didCellButtonTapped(_ cell:CollectionViewCell)
+    func didCellButtonTapped(_ cellPosition:Int)
 }
 
 class CollectionViewCell: UICollectionViewCell {
@@ -20,11 +20,11 @@ class CollectionViewCell: UICollectionViewCell {
      @IBOutlet weak var labelVendorAddress : UILabel!
      @IBOutlet weak var buttonAddProduct : UIButton!
      @IBOutlet weak var productIamge : UIImageView!
-   
+     var position : Int!
    
     @IBAction func addToCartClicked(_ sender: Any) {
         print("tapped")
-        cellDelegate?.didCellButtonTapped(self)
+        cellDelegate?.didCellButtonTapped(self.position)
     }
     
 }

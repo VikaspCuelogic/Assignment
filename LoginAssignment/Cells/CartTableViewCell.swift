@@ -8,7 +8,7 @@
 
 import UIKit
 protocol CartTableViewCellDelegate {
-    func didCellButtonTapped(_ cell:UITableViewCell)
+    func didCellButtonTapped(_ cellPoisition:Int)
 }
 class CartTableViewCell: UITableViewCell {
     var tableRowDelegate : CartTableViewCellDelegate!
@@ -19,6 +19,7 @@ class CartTableViewCell: UITableViewCell {
     @IBOutlet weak var labelProductPrice: UILabel!
     @IBOutlet weak var labelProductName: UILabel!
     @IBOutlet weak var productImage: UIImageView!
+    var position:Int!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,7 +33,7 @@ class CartTableViewCell: UITableViewCell {
     
     
     @IBAction func onRemoveBtnClick(_ sender: Any) {
-         tableRowDelegate.didCellButtonTapped(self)
+         tableRowDelegate.didCellButtonTapped(self.position)
     }
     
 }
