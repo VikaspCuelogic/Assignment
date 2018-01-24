@@ -175,7 +175,7 @@
                                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                             <connections>
-                                                                <action selector="onRemoveBtnClick:" destination="vBD-gy-BbF" eventType="touchUpInside" id="KUh-OV-Ciz"/>
+                                                                <action selector="onRemove" destination="vBD-gy-BbF" eventType="touchUpInside" id="iAF-qC-OFg"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
@@ -191,7 +191,6 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="btnRemoveFromCart" destination="rZi-AW-oEw" id="ywi-FH-Ih6"/>
                                             <outlet property="labelProductName" destination="hEe-Z3-5we" id="B4u-V5-dc3"/>
                                             <outlet property="labelProductPrice" destination="HHI-d5-yyP" id="nNh-NI-GLs"/>
                                             <outlet property="labelVendorName" destination="vrk-Iv-ZAp" id="FJ0-dg-vVB"/>
@@ -310,7 +309,6 @@
                                         </view>
                                         <constraints>
                                             <constraint firstItem="AoP-jg-mag" firstAttribute="leading" secondItem="oZO-U8-bDu" secondAttribute="leading" id="6mT-Vn-pto"/>
-                                            <constraint firstItem="UFb-sk-SGE" firstAttribute="top" secondItem="AoP-jg-mag" secondAttribute="bottom" constant="5" id="84A-Dn-IbW"/>
                                             <constraint firstItem="UFb-sk-SGE" firstAttribute="top" secondItem="AoP-jg-mag" secondAttribute="bottom" constant="5" id="8gz-uh-UEf"/>
                                             <constraint firstItem="UFb-sk-SGE" firstAttribute="centerX" secondItem="oZO-U8-bDu" secondAttribute="centerX" id="DbF-zZ-QwE"/>
                                             <constraint firstAttribute="trailing" secondItem="YO1-Mv-PkZ" secondAttribute="trailing" id="N9i-tZ-ftF"/>

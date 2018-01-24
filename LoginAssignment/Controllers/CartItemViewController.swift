@@ -66,9 +66,9 @@ extension CartItemViewController : UITableViewDelegate,UITableViewDataSource,Car
        
         cell.labelProductName.text = product.productname
         cell.labelProductPrice.text = "Price : \(product.price)"
+        print("Price : \(product.price)")
         cell.labelVendorName.text = product.vendorname
         cell.position = indexPath.row
-        
         cell.tableRowDelegate = self
         return cell
     }

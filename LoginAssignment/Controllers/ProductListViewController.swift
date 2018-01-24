@@ -11,11 +11,18 @@ import UIKit
 class ProductListViewController: UIViewController {
     @IBOutlet private weak var collectionView : UICollectionView!
 
-    private var products: [Dictionary<String, Any>] = []
+   
     private var appDelegate = UIApplication.shared.delegate as! AppDelegate
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private var productListFromServer : [ProductModel] = []
+    var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+    
     
     override func viewDidLoad() {
+        
+        activityIndicator.hidesWhenStopped = true;
+        activityIndicator.activityIndicatorViewStyle  = UIActivityIndicatorViewStyle.gray;
+        activityIndicator.center = view.center;
         super.viewDidLoad()
     
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -27,63 +34,88 @@ class ProductListViewController: UIViewController {
         layout.minimumLineSpacing = 10
        
         collectionView!.collectionViewLayout = layout
-        
+        self.view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        // API Call
+        self.makeAPICall()
+       
+     
 
-        readProductList()
     }
+    
 
-    private func readProductList(){
+    
+    
+    private func makeAPICall(){
+       
         
-        if let path = Bundle.main.path(forResource: "Products", ofType: "plist") {
-        
-            //If your plist contain root as Array
-            if let productDictionaries  = NSArray(contentsOfFile: path) as? [Dictionary<String, Any>] {
-                for (index,productFromPlist) in productDictionaries.enumerated() {
-                    
-                   
-                    let product = Product(entity: Product.entity(), insertInto: context)
-                   
-                    product.id = Int32(index)
-                  
-                    
-                    if let productName = productFromPlist["ProductName"] as? String {
-                         product.name = productName
-                    }
-                    
-                    if let productPrice = productFromPlist["ProductPrice"] as? Double {
-                        product.price = productPrice
-                    }
-                    
-                    if let vendorName = productFromPlist["VendorName"] as? String {
-                         product.vendorname = vendorName
-                    }
-                    
-                    if let vendorAddress = productFromPlist["VendorAddress"] as? String {
-                        product.vendoraddress = vendorAddress
-                    }
-                    // Save data
-                    appDelegate.saveContext()
-                    
-                    products.append(productFromPlist)
-                    
-                   // let index = IndexPath(row:products.count - 1, section:0)
-                    //collectionView?.insertItems(at: [index])
-                
-                }
-                
-                
-                
+        let session = URLSession.shared
+        let url = URL(string: "https://mobiletest-hackathon.herokuapp.com/getdata/")!
+    
+        let task = session.dataTask(with: url) { (data, response, error) in
+            DispatchQueue.main.async { // Correct
+                self.activityIndicator.stopAnimating()
             }
+           
+            if let error = error {
+               
+              print(error)
+            }else if let data = data,let response = response as? HTTPURLResponse,response.statusCode == 200 {
+                self.parseResult(data)
+                DispatchQueue.main.async { // Correct
+                     self.activityIndicator.stopAnimating()
+                     self.collectionView.reloadData()
+                }
+            }
+        }
+        
+         task.resume()
+    }
+    
+    private func parseResult(_ response : Data){
+    
+        let decoder = JSONDecoder()
+       
+        do {
+            let productListFromServer = try decoder.decode(ResponseModel.self, from: response)
+            storeProductList(productListFromServer.products)
+            self.productListFromServer = productListFromServer.products
+            print("count \(self.productListFromServer.count)")
+        } catch let decodeError as NSError {
+            print("\(decodeError.localizedDescription)")
+        }
+        
+    }
+    
+    private func storeProductList(_ productList : [ProductModel]){
+        for (index,product) in productList.enumerated(){
+            let productToStore = Product(entity: Product.entity(), insertInto: context)
+            
+            productToStore.id = Int32(index)
+            productToStore.name = product.productname
+            productToStore.price = Double(product.price)!
+            productToStore.img = product.productImg
+            productToStore.vendorname = product.vendorname
+            productToStore.vendoraddress = product.vendoraddress
+            productToStore.phoneno = product.phoneNumber
+            
+            // Save data
+            appDelegate.saveContext()
+            // add product to collection view list
+
+            
         }
     }
     
-    
 }
+
+
+
 
 extension ProductListViewController : UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewCellDelegate{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return products.count;
+        return productListFromServer.count;
     }
     
     
@@ -95,25 +127,13 @@ extension ProductListViewController : UICollectionViewDelegate,UICollectionViewD
             cell.layer.borderWidth = 1
             cell.layer.cornerRadius = 0
         
-            let product = products[indexPath.row]
+            let product = productListFromServer[indexPath.row]
    
             cell.productIamge.image = UIImage(named: ("picture"))
-        
-            if let productName = product["ProductName"] as? String {
-                cell.labelProductName.text = productName
-            }
-        
-            if let productPrice = product["ProductPrice"] as? String {
-                cell.labelProductPrice.text = "Price :"+productPrice
-            }
-        
-            if let vendorName = product["VendorName"] as? String {
-                cell.labelVendorName.text = vendorName
-            }
-        
-            if let vendorAddress = product["VendorAddress"] as? String {
-                cell.labelVendorAddress.text = vendorAddress
-            }
+            cell.labelProductName.text = product.productname
+            cell.labelProductPrice.text = "Price :"+product.price
+            cell.labelVendorName.text = product.vendorname
+            cell.labelVendorAddress.text = product.vendoraddress
             cell.position = indexPath.row
             cell.cellDelegate = self
     
@@ -125,23 +145,12 @@ extension ProductListViewController : UICollectionViewDelegate,UICollectionViewD
         
         let cartProduct = CartProduct(entity: CartProduct.entity(), insertInto: context)
         
-        let productFromPlist = products[cellPosition]
-        
-        
+        let productFromCollection = productListFromServer[cellPosition]
         
         cartProduct.id = Int16(cellPosition)
-        
-        if let productName = productFromPlist["ProductName"] as? String {
-            cartProduct.productname = productName
-        }
-        
-        if let productPrice = productFromPlist["ProductPrice"] as? Double {
-            cartProduct.price = productPrice
-        }
-        
-        if let vendorName = productFromPlist["VendorName"] as? String {
-            cartProduct.vendorname = vendorName
-        }
+        cartProduct.productname = productFromCollection.productname
+        cartProduct.price = Double(productFromCollection.price)!
+        cartProduct.vendorname = productFromCollection.vendorname
         
         appDelegate.saveContext()
     }

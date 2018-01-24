@@ -31,9 +31,8 @@ class CartTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    
-    @IBAction func onRemoveBtnClick(_ sender: Any) {
-         tableRowDelegate.didCellButtonTapped(self.position)
+    @IBAction func onRemove(){
+        tableRowDelegate.didCellButtonTapped(self.position)
     }
     
 }

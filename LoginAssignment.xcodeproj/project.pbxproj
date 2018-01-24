@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		F2ACB6C12017211900386A9B /* TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2ACB6C02017211900386A9B /* TextFieldExtension.swift */; };
+		F2ACB6C32017602800386A9B /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2ACB6C22017602800386A9B /* ProductModel.swift */; };
+		F2ACB6C72017748500386A9B /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2ACB6C62017748500386A9B /* ResponseModel.swift */; };
+		F2ACB6CB2017835F00386A9B /* Product+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2ACB6CA2017835F00386A9B /* Product+CoreDataProperties.swift */; };
 		F2B3530A20108703009F64B1 /* Products.plist in Resources */ = {isa = PBXBuildFile; fileRef = F2B3530920108703009F64B1 /* Products.plist */; };
 		F2B3530C2010B669009F64B1 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B3530B2010B669009F64B1 /* CollectionViewCell.swift */; };
 		F2B3530E2010DA04009F64B1 /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B3530D2010DA04009F64B1 /* CartTableViewCell.swift */; };
@@ -23,11 +26,13 @@
 		F2D6FF2420160AB800D6A954 /* Product+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D6FF2220160AB800D6A954 /* Product+CoreDataClass.swift */; };
 		F2D6FF2C20162F3B00D6A954 /* CartProduct+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D6FF2A20162F3B00D6A954 /* CartProduct+CoreDataClass.swift */; };
 		F2D6FF2F20163F1B00D6A954 /* CartProduct+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D6FF2E20163F1B00D6A954 /* CartProduct+CoreDataProperties.swift */; };
-		F2D6FF3120163F4E00D6A954 /* Product+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D6FF3020163F4E00D6A954 /* Product+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F2ACB6C02017211900386A9B /* TextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldExtension.swift; sourceTree = "<group>"; };
+		F2ACB6C22017602800386A9B /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
+		F2ACB6C62017748500386A9B /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
+		F2ACB6CA2017835F00386A9B /* Product+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Product+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F2B3530920108703009F64B1 /* Products.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Products.plist; sourceTree = "<group>"; };
 		F2B3530B2010B669009F64B1 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		F2B3530D2010DA04009F64B1 /* CartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewCell.swift; sourceTree = "<group>"; };
@@ -45,7 +50,6 @@
 		F2D6FF2220160AB800D6A954 /* Product+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Product+CoreDataClass.swift"; sourceTree = "<group>"; };
 		F2D6FF2A20162F3B00D6A954 /* CartProduct+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CartProduct+CoreDataClass.swift"; sourceTree = "<group>"; };
 		F2D6FF2E20163F1B00D6A954 /* CartProduct+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CartProduct+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		F2D6FF3020163F4E00D6A954 /* Product+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Product+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				F2B3530920108703009F64B1 /* Products.plist */,
+				F2ACB6C22017602800386A9B /* ProductModel.swift */,
+				F2ACB6C62017748500386A9B /* ResponseModel.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -109,7 +115,7 @@
 		F2C6EFE8200DE1A000DCE6B1 = {
 			isa = PBXGroup;
 			children = (
-				F2D6FF3020163F4E00D6A954 /* Product+CoreDataProperties.swift */,
+				F2ACB6CA2017835F00386A9B /* Product+CoreDataProperties.swift */,
 				F2D6FF2E20163F1B00D6A954 /* CartProduct+CoreDataProperties.swift */,
 				F2D6FF2A20162F3B00D6A954 /* CartProduct+CoreDataClass.swift */,
 				F2D6FF2220160AB800D6A954 /* Product+CoreDataClass.swift */,
@@ -215,10 +221,10 @@
 			files = (
 				F2D6FF2F20163F1B00D6A954 /* CartProduct+CoreDataProperties.swift in Sources */,
 				F2B3530E2010DA04009F64B1 /* CartTableViewCell.swift in Sources */,
-				F2D6FF3120163F4E00D6A954 /* Product+CoreDataProperties.swift in Sources */,
 				F2C6F00B200E1FB800DCE6B1 /* CartItemViewController.swift in Sources */,
 				F2C6EFF7200DE1A000DCE6B1 /* LoginViewController.swift in Sources */,
 				F2ACB6C12017211900386A9B /* TextFieldExtension.swift in Sources */,
+				F2ACB6CB2017835F00386A9B /* Product+CoreDataProperties.swift in Sources */,
 				F2B3530C2010B669009F64B1 /* CollectionViewCell.swift in Sources */,
 				F2C6F007200E040E00DCE6B1 /* TabBarController.swift in Sources */,
 				F2D6FF2C20162F3B00D6A954 /* CartProduct+CoreDataClass.swift in Sources */,
@@ -226,6 +232,8 @@
 				F2C6F009200E1F9C00DCE6B1 /* ProductListViewController.swift in Sources */,
 				F2C6EFF5200DE1A000DCE6B1 /* AppDelegate.swift in Sources */,
 				F2D6FF1A2016027500D6A954 /* ProductData.xcdatamodeld in Sources */,
+				F2ACB6C72017748500386A9B /* ResponseModel.swift in Sources */,
+				F2ACB6C32017602800386A9B /* ProductModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

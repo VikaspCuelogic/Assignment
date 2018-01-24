@@ -22,7 +22,8 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         textFieldUserName.text = storedUserName
         textFieldPassword.text = storedPassword
-        textFieldPassword.setLeftPaddingPoints(10)
+        
+        textFieldPassword.setLeftPaddingPoints(20)
         textFieldUserName.setLeftPaddingPoints(10)
     }
     

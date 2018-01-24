@@ -8,27 +8,17 @@
         <attribute name="qty" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="vendorname" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="Entity" representedClassName="Entity" syncable="YES" codeGenerationType="class"/>
     <entity name="Product" representedClassName="Product" syncable="YES">
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="img" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="phoneno" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="qty" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="vendoraddress" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="vendorname" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="Vendor" representedClassName="Vendor" syncable="YES" codeGenerationType="class">
-        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="phoneNo" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="vendorId" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-    </entity>
     <elements>
         <element name="CartProduct" positionX="-36" positionY="54" width="128" height="135"/>
-        <element name="Product" positionX="-54" positionY="-9" width="128" height="165"/>
-        <element name="Vendor" positionX="-45" positionY="72" width="128" height="105"/>
-        <element name="Entity" positionX="-36" positionY="81" width="128" height="45"/>
+        <element name="Product" positionX="-54" positionY="-9" width="128" height="150"/>
     </elements>
 </model>
