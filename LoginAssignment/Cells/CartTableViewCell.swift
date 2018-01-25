@@ -13,13 +13,14 @@ protocol CartTableViewCellDelegate {
 class CartTableViewCell: UITableViewCell {
     var tableRowDelegate : CartTableViewCellDelegate!
     @IBOutlet weak var btnCallVendor: UIButton!
-    @IBOutlet weak var btnRemoveFromCart: UIButton!
     @IBOutlet weak var labelVendorAddress: UILabel!
     @IBOutlet weak var labelVendorName: UILabel!
     @IBOutlet weak var labelProductPrice: UILabel!
     @IBOutlet weak var labelProductName: UILabel!
     @IBOutlet weak var productImage: UIImageView!
-    var position:Int!
+   
+    @IBOutlet weak var labelQuantity: UILabel!
+    @IBOutlet weak var btnRemove: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,8 +32,9 @@ class CartTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    @IBAction func onRemove(){
-        tableRowDelegate.didCellButtonTapped(self.position)
+    @IBAction func onRemove(_ sender : UIButton){
+        tableRowDelegate.didCellButtonTapped(sender.tag)
     }
+
     
 }

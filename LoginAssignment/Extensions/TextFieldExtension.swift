@@ -8,12 +8,23 @@
 
 import Foundation
 import UIKit
-extension UITextField {
+class TextField: UITextField {
     
-    func setLeftPaddingPoints(_ spaceValue:CGFloat){
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: spaceValue, height: self.frame.size.height))
-        self.leftView = paddingView
-        self.leftViewMode = .always
+    var padding = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+    
+    func  setPadding(_ paddingValue: CGFloat) {
+        padding = UIEdgeInsets(top: 0, left: paddingValue, bottom: 0, right: paddingValue)
     }
     
+    override func textRect(forBounds bounds: CGRect) -> CGRect {
+        return UIEdgeInsetsInsetRect(bounds, padding)
+    }
+    
+    override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+        return UIEdgeInsetsInsetRect(bounds, padding)
+    }
+    
+    override func editingRect(forBounds bounds: CGRect) -> CGRect {
+        return UIEdgeInsetsInsetRect(bounds, padding)
+    }
 }

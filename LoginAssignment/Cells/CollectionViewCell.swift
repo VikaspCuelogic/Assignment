@@ -20,11 +20,10 @@ class CollectionViewCell: UICollectionViewCell {
      @IBOutlet weak var labelVendorAddress : UILabel!
      @IBOutlet weak var buttonAddProduct : UIButton!
      @IBOutlet weak var productIamge : UIImageView!
-     var position : Int!
+    
    
-    @IBAction func addToCartClicked(_ sender: Any) {
-        print("tapped")
-        cellDelegate?.didCellButtonTapped(self.position)
+    @IBAction func addToCartClicked(_ sender: UIButton) {
+        cellDelegate?.didCellButtonTapped(sender.tag)
     }
     
 }

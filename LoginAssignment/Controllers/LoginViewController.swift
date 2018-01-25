@@ -22,9 +22,6 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         textFieldUserName.text = storedUserName
         textFieldPassword.text = storedPassword
-        
-        textFieldPassword.setLeftPaddingPoints(20)
-        textFieldUserName.setLeftPaddingPoints(10)
     }
     
     @IBAction func validateCredentials(){
@@ -38,45 +35,38 @@ class LoginViewController: UIViewController {
         }
         
         if username.isEmpty{
-            showErrorAlert("Username cannot be empty")
+            
+            self.showAlert("Error","Username cannot be empty")
         } else if password.isEmpty {
-            showErrorAlert("Password cannot be empty")
+            self.showAlert("Error","Password cannot be empty")
         } else if !isValidEmail(username){
-            showErrorAlert("Invalid email")
+            self.showAlert("Error","Invalid email")
         } else if !isValidPassword(password){
-            showErrorAlert("password is too short")
+            self.showAlert("Error","password is too short")
         } else if !(username == storedUserName && password == storedPassword){
-            showErrorAlert("Invalid username or password")
+            self.showAlert("Error","Invalid username or password")
         } else {
             redirectToCartScreen()
         }
-    
+        
     }
     
-    private func showErrorAlert(_ message : String){
-        
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "Done", style: .default, handler: nil)
-        alert.addAction(action)
-        
-        present(alert, animated: true, completion: nil)
-    }
     
     private func isValidEmail(_ email : String) -> Bool{
         let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
         return emailPredicate.evaluate(with: email)
     }
-
+    
     private func isValidPassword(_ password : String) -> Bool {
         return password.count >= 8 ? true : false
     }
     
     private func redirectToCartScreen(){
         let cartViewController = storyboard?.instantiateViewController(withIdentifier: "TabViewController") as! TabBarController
-    
+        
         self.navigationController?.pushViewController(cartViewController, animated: true)
     }
-
+    
 }
 

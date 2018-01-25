@@ -9,6 +9,7 @@
 import Foundation
 
 struct ProductModel : Decodable {
+    let id : Int32?
     let productname : String
     let price : String
     let vendorname : String
