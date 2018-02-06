@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-
+import SDWebImage
 
 
 class ProductListViewController: UIViewController, ProductDelegate {
@@ -20,25 +20,30 @@ class ProductListViewController: UIViewController, ProductDelegate {
     
     override func viewDidLoad() {
         // Add activity indicator
-        addActivityIndicator()
         super.viewDidLoad()
-       
+        addActivityIndicator()
         
         // Set number of columns to collection view
         setCollectionViewColumns()
         
         // Check network connection before network call
         if Util.isConnectedToNetwork() {
+            
             if let productList = DatabaseManager.getInstance.getProductList(){
                 if productList.isEmpty {
-                     makeAPICall()
-                } else{
+                    makeAPICall()
+                }else {
                     productListFromServer = productList
                     collectionView.reloadData()
                 }
             }
-           
         } else {
+            if let productList = DatabaseManager.getInstance.getProductList(){
+                if !productList.isEmpty {
+                    productListFromServer = productList
+                    collectionView.reloadData()
+                }
+            }
             showAlert("No Internet Connection", "Make sure your device is connected to the internet.")
         }
         
@@ -109,7 +114,10 @@ extension ProductListViewController :UICollectionViewDelegate,UICollectionViewDa
         
         let product = productListFromServer[indexPath.row]
         
-        cell.productIamge.image = UIImage(named: ("picture"))
+        
+        
+        //cell.productIamge.image = UIImage(named: ("picture"))
+        cell.productIamge.sd_setImage(with: URL(string: product.img!), placeholderImage: UIImage(named: "picture"))
         cell.labelProductName.text = product.name
         cell.labelProductPrice.text = "Price :\(product.price)"
         cell.labelVendorName.text = product.vendorname

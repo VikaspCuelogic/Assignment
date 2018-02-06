@@ -26,4 +26,6 @@ class CollectionViewCell: UICollectionViewCell {
         cellDelegate?.didCellButtonTapped(sender.tag)
     }
     
+   
+    
 }

@@ -17,7 +17,7 @@ class ProductServiceProvider {
     public var productDelegate : ProductDelegate!
     
     func getProductListFromServer(_ productDelegate : ProductDelegate)  {
-        let  httpRequest = HttpRequest()
+        let  httpRequest = HttpRequest.getInstance
         self.productDelegate = productDelegate
         
         httpRequest.makeGetAPICall(GET_PRODUCT_URL) {data, response, error in
@@ -26,6 +26,7 @@ class ProductServiceProvider {
                 self.productDelegate.onProductTaskComplete(DatabaseManager.getInstance.getProductList())
             }
         }
+        httpRequest.makeGetAPICallWithAlamofire(GET_PRODUCT_URL)
     }
     
     

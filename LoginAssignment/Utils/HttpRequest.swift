@@ -7,8 +7,15 @@
 //
 
 import Foundation
-
+import Alamofire
 class HttpRequest {
+    
+    static let getInstance = HttpRequest()
+    
+    private init(){
+        
+    }
+    
     private var serverData : Data?
     
     func makeGetAPICall(_ url : String,completionListener : @escaping (Data?,URLResponse?,Error?) -> Void)  {
@@ -29,6 +36,18 @@ class HttpRequest {
         }
         task.resume()
     
+    }
+    
+    func makeGetAPICallWithAlamofire(_ url : String)  {
+        Alamofire.request(url).responseData { (resData) -> Void in
+            print(resData.result.value!)
+            let strOutput = String(data : resData.result.value!, encoding : String.Encoding.utf8)
+            print("Response from alamofire :"+strOutput!)
+        }
+
+     
+        
+        
     }
     
 }
